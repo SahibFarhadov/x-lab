@@ -1,0 +1,5 @@
+@media (max-width:768px) {
+    .custom-border{
+        border: 0px !important;
+    }
+}

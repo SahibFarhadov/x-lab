@@ -1,0 +1,10 @@
+.xlab-show{
+    display: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+}
+@media (max-width:991px) {
+    .xlab-show{
+        display: block;
+    }
+}
