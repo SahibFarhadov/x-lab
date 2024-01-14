@@ -4,4 +4,9 @@
 {% endblock %}
 {% block content %}
     <h1>Index sehifesi</h1>
+    <div class="container">
+        {%for yazi in yazilar%}
+        <a href="{%url 'yazini_tap' yazi.blog_slug %}">{{yazi.basliq}}</a><br />
+        {%endfor%}
+    </div>
 {% endblock %}

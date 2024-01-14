@@ -57,7 +57,7 @@
       </a>
         <ul class="navbar-nav me-auto ms-auto xlab-show">
           <li class="nav-item">
-            <a href="#" class="nav-link">X-LAB</a>
+            <a href="{%url 'index'%}" class="nav-link">X-LAB</a>
           </li>
         </ul>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight" aria-label="Toggle navigation">
@@ -81,9 +81,9 @@
                 Kateqoriyalar
               </a>
               <ul class="dropdown-menu custom-border">
-                <li><a class="dropdown-item" href="#">Elektrik</a></li>
-                <li><a class="dropdown-item" href="#">Avtomatika</a></li>
-                <li><a class="dropdown-item" href="#">Proqramlaşdırma</a></li>
+                {%for kateqoriya in kateqoriyalar%}
+                  <li><a class="dropdown-item" href="#">{{kateqoriya.kateqoriya_adi}}</a></li>
+                {%endfor%}
               </ul>
             </li>
           </ul>

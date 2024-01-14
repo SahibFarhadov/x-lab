@@ -23,6 +23,7 @@ class Blog(models.Model):
     class Meta:
         verbose_name = 'Məqalə'
         verbose_name_plural = 'Məqalələr'
+    basliq_sekli = models.ImageField(upload_to = "uploads/%d.%m.%Y",default = 'uploads/default.jpg',null=True,blank=True)
     basliq = models.CharField('Məqalə başlığı', max_length = 200)
     kontent = CKEditor5Field('Məqalə kontenti', config_name = 'extends')
     yaradilma_tarixi = models.DateTimeField('Yaranma tarixi', auto_now_add = True)
@@ -34,7 +35,7 @@ class Blog(models.Model):
     karuselde = models.BooleanField('Karuseldə', default = False)
 
     def __str__(self):
-        return self.title
+        return self.basliq
 
     def save(self, *args, **kwargs):
         self.blog_slug = slugify(self.basliq, replacements = [['Ə','E'],['ə','e']])
