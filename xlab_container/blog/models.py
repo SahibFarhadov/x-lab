@@ -3,9 +3,6 @@ from django_ckeditor_5.fields import CKEditor5Field
 from slugify import slugify
 from django.conf import settings
 
-# Create your models here.
-
-
 # Kateqoriyalar ucun kateqoriya modeli
 class Kateqoriya(models.Model):
     class Meta:
@@ -15,12 +12,11 @@ class Kateqoriya(models.Model):
     kateqoriya_slug = models.SlugField(editable=False, unique=True)
 
     def __str__(self):
-        return self.kateqoriya_adi
+        return f"{self.kateqoriya_adi}"
 
     def save(self, *args, **kwargs):
         self.kateqoriya_slug = slugify(self.kateqoriya_adi, replacements = [['Ə','E'],['ə','e']])
         super().save(*args, **kwargs)
-
 
 # Butun bloglar ucun blog modeli
 class Blog(models.Model):
@@ -32,11 +28,10 @@ class Blog(models.Model):
     yaradilma_tarixi = models.DateTimeField('Yaranma tarixi', auto_now_add = True)
     deyisdirilme_tarixi = models.DateTimeField('Yaranma tarixi', auto_now = True)
     blog_slug = models.SlugField(editable=False, unique = True)
-    blog_kateqoriya = models.ManyToManyField('kateqoriya seçin', Kategoriyalar)
+    blog_kateqoriya = models.ManyToManyField(Kateqoriya, verbose_name = 'Kateqoriyaları seçin.')
     yayinda_mi = models.BooleanField('Yayına buraxılsın?', default = False)
     yeni_mi = models.BooleanField('Yeni məqalə?', default = True)
     karuselde = models.BooleanField('Karuseldə', default = False)
-
 
     def __str__(self):
         return self.title
