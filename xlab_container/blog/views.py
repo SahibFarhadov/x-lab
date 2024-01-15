@@ -12,7 +12,8 @@ def index(request):
 
 def yazini_tap(request,_slug):
     context = {
-        'yazi':Blog.objects.get(blog_slug=_slug)
+        'yazi':Blog.objects.get(blog_slug=_slug),
+        'kateqoriyalar': Kateqoriya.objects.all(),
     }
     return render(request,'blog/yazini_tap.html',context)
     

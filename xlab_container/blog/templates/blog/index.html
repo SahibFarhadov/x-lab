@@ -3,10 +3,13 @@
     Əsas səhifə
 {% endblock %}
 {% block content %}
-    <h1>Index sehifesi</h1>
-    <div class="container">
-        {%for yazi in yazilar%}
-        <a href="{%url 'yazini_tap' yazi.blog_slug %}">{{yazi.basliq}}</a><br />
-        {%endfor%}
+    <div class="container-fluid mt-2">
+        <h1>Index sehifesi</h1>
+        <div class="container">
+            {%for yazi in yazilar%}
+            <a href="{%url 'yazini_tap' yazi.blog_slug %}">{{yazi.basliq}}</a><br />
+            {%endfor%}
+            <h2>{{request.user.is_authenticated}}</h2>
+        </div>
     </div>
 {% endblock %}
