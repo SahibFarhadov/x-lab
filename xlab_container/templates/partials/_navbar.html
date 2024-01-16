@@ -70,14 +70,6 @@
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
-            {%if not request.user.is_authenticated%}
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Qeydiyyat</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Daxil ol</a>
-            </li>
-            {%endif%}
             <li class="nav-item">
               <a class="nav-link" href="#">Link</a>
             </li>
@@ -87,16 +79,35 @@
               </a>
               <ul class="dropdown-menu custom-border">
                 {%for kateqoriya in kateqoriyalar%}
-                  <li><a class="dropdown-item" href="#">{{kateqoriya.kateqoriya_adi}}</a></li>
+                {%if kateqoriya.kateqoriya_adi == secilen_kateqoriya.kateqoriya_adi %}
+                  <li><a class="dropdown-item active" href="{%url 'kateqoriyaya_get' kateqoriya.kateqoriya_slug%}">{{kateqoriya.kateqoriya_adi}}</a></li>
+                {%else%}
+                  <li><a class="dropdown-item" href="{%url 'kateqoriyaya_get' kateqoriya.kateqoriya_slug%}">{{kateqoriya.kateqoriya_adi}}</a></li>
+                {%endif%}
                 {%endfor%}
               </ul>
             </li>
+          </ul>
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            {%if not request.user.is_authenticated%}
+              <li class="nav-item">
+                <a class="nav-link{%if cari_sehife == 'qeydiyyat' %} active{%endif%}" aria-current="page" href="{%url 'register_user'%}">Qeydiyyat</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link{%if cari_sehife == 'daxil_ol' %} active{%endif%}" aria-current="page" href="{%url 'login_user'%}">Daxil ol</a>
+              </li>
+            {%else%}
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">Hesab</a>
+              </li>
+            {%endif%}
           </ul>
           <!--
             <form class="d-flex mt-3" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
+          
           -->
         </div>
       </div>
