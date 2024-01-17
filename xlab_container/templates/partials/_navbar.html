@@ -65,9 +65,10 @@
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">Offcanvas</h5>
+          <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">Naviqasiya</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <hr class="d-block d-lg-none" />
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
             <li class="nav-item">
@@ -81,8 +82,10 @@
                 {%for kateqoriya in kateqoriyalar%}
                 {%if kateqoriya.kateqoriya_adi == secilen_kateqoriya.kateqoriya_adi %}
                   <li><a class="dropdown-item active" href="{%url 'kateqoriyaya_get' kateqoriya.kateqoriya_slug%}">{{kateqoriya.kateqoriya_adi}}</a></li>
+                  <li><hr class="dropdown-divider"></li>
                 {%else%}
                   <li><a class="dropdown-item" href="{%url 'kateqoriyaya_get' kateqoriya.kateqoriya_slug%}">{{kateqoriya.kateqoriya_adi}}</a></li>
+                  <li><hr class="dropdown-divider"></li>
                 {%endif%}
                 {%endfor%}
               </ul>
