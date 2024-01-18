@@ -33,6 +33,7 @@ class Blog(models.Model):
     yayinda_mi = models.BooleanField('Yayına buraxılsın?', default = False)
     yeni_mi = models.BooleanField('Yeni məqalə?', default = True)
     karuselde = models.BooleanField('Karuseldə', default = False)
+    istifadeci = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='İstifadəçi',on_delete = models.CASCADE)
 
     def __str__(self):
         return self.basliq
