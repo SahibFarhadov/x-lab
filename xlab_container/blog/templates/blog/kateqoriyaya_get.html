@@ -22,7 +22,7 @@
                         <div class="card-body">
                         <h5 class="card-title">{{yazi.basliq}}</h5>
                         <p class="card-text">
-                            {{yazi.kontent|safe|truncatewords:5}}
+                            {{yazi.kontent|truncatechars:40|safe}}
                         </p>
                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                         </div>
