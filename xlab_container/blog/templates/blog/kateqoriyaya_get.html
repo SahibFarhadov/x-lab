@@ -1,7 +1,18 @@
 {%extends 'base.html'%}
 {% block title %}
-    Əsas səhifə
+    Kateqoriya | {{secilen_kateqoriya}}
 {% endblock %}
 {% block content %}
     <h2>Kateqoriyaya get sehifesi</h2>
+    <div>
+        {% if yazilar %}
+            {% for yazi in  yazilar%}
+                <div>
+                    <a target="_blank" href="{%url 'yazini_tap' yazi.blog_slug%}">{{yazi.basliq}}</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-warning">Bu kateqoriyaya aid məqalə yoxdur.</div>
+        {% endif %}
+    </div>
 {% endblock %}

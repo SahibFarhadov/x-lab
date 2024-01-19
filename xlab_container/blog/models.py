@@ -36,7 +36,7 @@ class Blog(models.Model):
     istifadeci = models.ForeignKey(settings.AUTH_USER_MODEL,verbose_name='İstifadəçi',on_delete = models.CASCADE)
 
     def __str__(self):
-        return self.basliq
+        return f"{self.basliq} meqalesi"
 
     def save(self, *args, **kwargs):
         self.blog_slug = slugify(self.basliq, replacements = [['Ə','E'],['ə','e']])

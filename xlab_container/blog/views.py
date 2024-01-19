@@ -21,7 +21,7 @@ def yazini_tap(request,_slug):
 def kateqoriyaya_get(request,_slug):
     context = {
         'kateqoriyalar': Kateqoriya.objects.all(),
-        'yazilar' : Blog.objects.all(),
+        'yazilar' : Kateqoriya.objects.get(kateqoriya_slug =_slug).blog_set.all(),
         'secilen_kateqoriya' : Kateqoriya.objects.get(kateqoriya_slug=_slug),
     }
     return render(request,'blog/kateqoriyaya_get.html',context)
