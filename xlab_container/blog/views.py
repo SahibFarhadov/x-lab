@@ -8,6 +8,7 @@ def index(request):
         'kateqoriyalar': Kateqoriya.objects.all(),
         'yazilar' : Blog.objects.all(),
         'cox_oxunulan': Blog.objects.get(id=1),
+        'yeni_yazilar' : Blog.objects.filter(yeni_mi=True),
     }
     return render(request,'blog/index.html',context)
 
