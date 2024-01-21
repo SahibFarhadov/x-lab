@@ -6,33 +6,37 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col text-center">
-                <h2>{{secilen_kateqoriya}} kateqoriyasına aid məqalələr</h2>
+                <h2 class="h2"><span class="text-primary">{{secilen_kateqoriya}}</span> kateqoriyasına aid məqalələr</h2>
             </div>
         </div>
-        {% if yazilar %}
-            {% for yazi in  yazilar%}
-                <div class="card mb-3 p-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                    <div class="col-md-4">
-                        <a href="{%url 'yazini_tap' yazi.blog_slug%}" target="_blank" rel="noopener noreferrer">
-                            <img src="{{yazi.basliq_sekli.url}}" class="img-fluid rounded-start" alt="{{yazi.basliq}}">
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">{{yazi.basliq}}</h5>
-                        <p class="card-text">
-                            {{yazi.kontent|truncatechars:40|safe}}
-                        </p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        <div class="row">
+            {% if yazilar %}
+                {% for yazi in  yazilar%}
+                <div class="col-md-6 col-lg-6 col-xl-4 col-xxl-4">
+                    <div class="card mb-3 p-3 w-100">
+                        <div class="row g-0">
+                        <div class="col-md-4">
+                            <a href="{%url 'yazini_tap' yazi.blog_slug%}" target="_blank" rel="noopener noreferrer">
+                                <img src="{{yazi.basliq_sekli.url}}" class="img-fluid rounded-start" alt="{{yazi.basliq}}">
+                            </a>
                         </div>
-                        <a href="{%url 'yazini_tap' yazi.blog_slug%}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ətraflı oxu...</a>
-                    </div>
-                    </div>
-                </div>    
-            {% endfor %}
-        {% else %}
-                <div class="alert alert-warning">Bu kateqoriyaya aid məqalə yoxdur.</div>
-        {% endif %}
+                        <div class="col-md-8">
+                            <div class="card-body">
+                            <h5 class="card-title">{{yazi.basliq}}</h5>
+                            <p class="card-text">
+                                {{yazi.kontent|truncatechars:10|safe}}
+                            </p>
+                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                            </div>
+                            <a href="{%url 'yazini_tap' yazi.blog_slug%}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Ətraflı oxu...</a>
+                        </div>
+                        </div>
+                    </div>    
+                </div>
+                {% endfor %}
+            {% else %}
+                    <div class="alert alert-warning">Bu kateqoriyaya aid məqalə yoxdur.</div>
+            {% endif %}
+        </div>
     </div>
 {% endblock %}
