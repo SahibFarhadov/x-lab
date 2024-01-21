@@ -2,6 +2,9 @@ from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 from slugify import slugify
 from django.conf import settings
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill,ResizeToFit
+
 
 # Kateqoriyalar ucun kateqoriya modeli
 class Kateqoriya(models.Model):
@@ -24,6 +27,10 @@ class Blog(models.Model):
         verbose_name = 'Məqalə'
         verbose_name_plural = 'Məqalələr'
     basliq_sekli = models.ImageField(upload_to = "uploads/%d.%m.%Y",default = 'uploads/default.jpg',null=True,blank=True)
+    karusel_sekli = ImageSpecField(source="basliq_sekli",
+                                   processors=[ResizeToFill(600,400)],
+                                   format='JPEG',
+                                   options={'quality':100})
     basliq = models.CharField('Məqalə başlığı', max_length = 200)
     kontent = CKEditor5Field('Məqalə kontenti', config_name = 'extends')
     yaradilma_tarixi = models.DateTimeField('Yaranma tarixi', auto_now_add = True)
