@@ -59,9 +59,10 @@
                           <h5 class="card-title">
                             <a class="cox_oxunulan" href="{%url 'yazini_tap' cox_oxunulan.blog_slug%}" target="_blank" title="{{cox_oxunulan.basliq}}">{{cox_oxunulan.basliq}}</a>
                           </h5>
-                          <p class="card-text">Kateqoriya -
-                            {%for kateqoriya in cox_oxunulan.blog_kateqoriya.all%}
-                                <span class="text-body-secondary">{{kateqoriya.kateqoriya_adi|lower}}&nbsp;</span>
+                          <p class="card-text cox_oxunulan_kateqoriya">Kateqoriya -
+                            {%for kateqoriya,novbeti in cox_oxunulan_kateqoriya_list%}
+                                <span class="text-body-secondary">{{kateqoriya.kateqoriya_adi|lower}}</span>
+                                {%if novbeti %},{%endif%}
                             {%endfor%}
                           </p>
                         </div>
@@ -86,6 +87,5 @@
             </div>
         </div>
     </div>
-
     <i class="bi bi-android2"></i>
 {% endblock %}
