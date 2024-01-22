@@ -1,0 +1,9 @@
+@media screen and (min-width:768px) {
+   
+}
+.btn_etrafli_oxu{
+    text-decoration: none;
+}
+.btn_etrafli_oxu:hover{
+    text-decoration: underline;
+}
