@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from blog.models import Kateqoriya
+from .forms import register_user_form
 
 # login user
 def _login_user(request):
@@ -17,7 +18,8 @@ def _logout_user(request):
 def _register_user(request):
 	context = {
         'kateqoriyalar': Kateqoriya.objects.all(),
-        'cari_sehife' : 'qeydiyyat'
+        'cari_sehife' : 'qeydiyyat',
+		'form' : register_user_form(),
     }
 	return render(request,'account/register_user.html',context)
 
