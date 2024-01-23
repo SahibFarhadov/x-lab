@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from blog.models import Kateqoriya
 from .forms import register_user_form
-
+from .models import Author
+from django.db import models
 # login user
 def _login_user(request):
 	context = {
@@ -16,11 +17,21 @@ def _logout_user(request):
 
 # register user
 def _register_user(request):
+	if request.method == "POST":
+		email = request.POST["email"]
+		password1 = request.POST["password1"]
+		password2 = request.POST["password2"]
+		if Author.objects.filter(email = email).exists():
+			print("bu email ile qeydiyyat olunmusdur.")
+		else:
+			if password1 == password2:
+				Author.objects.create_user(email=email,password=password1)
+				return redirect("index")
 	context = {
-        'kateqoriyalar': Kateqoriya.objects.all(),
-        'cari_sehife' : 'qeydiyyat',
-		'form' : register_user_form(),
-    }
+	'kateqoriyalar': Kateqoriya.objects.all(),
+	'cari_sehife' : 'qeydiyyat',
+	'form' : register_user_form(),
+}
 	return render(request,'account/register_user.html',context)
 
 # user profile view
