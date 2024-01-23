@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'blog',
     'django_ckeditor_5',
     'imagekit',
-    'django_extensions',
 ]
 
 MIDDLEWARE = [

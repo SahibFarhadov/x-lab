@@ -1,13 +1,22 @@
 {%extends 'base.html'%}
-
+{% block title %}
+	İstifadəçi qeydiyyatı
+{% endblock  %}
 {%block content%}
 	<div class="container justify-content-center">
 		<div class="text-center mb-3 mt-2">
 			<h1>Qeydiyyat</h1>
 		</div>
-		<form method="post">
-			{{form.as_p}}
-			<input class="btn btn-success" type="submit" value="QEYDIYYAT!">
-		</form>
+		<div class="row">
+			<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+			<div class="col-sm-8 col-xs-8 col-md-4 col-lg-4 col-xl-4">
+				<form method="post" action="{%url 'register_user'%}">
+					{% csrf_token %}
+					
+					<button type="submit" class="btn btn-success">Qeydiyyat</button>
+				</form>
+			</div>
+			<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+		</div>
 	</div>
 {%endblock%}
