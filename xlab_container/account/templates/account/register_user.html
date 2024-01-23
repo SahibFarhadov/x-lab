@@ -1,6 +1,10 @@
 {%extends 'base.html'%}
+{%load static%}
 {% block title %}
 	İstifadəçi qeydiyyatı
+{% endblock  %}
+{% block some_scripts %}
+<script src="{%static 'account/js/show_password.js'%}"></script>
 {% endblock  %}
 {%block content%}
 	<div class="container justify-content-center">
@@ -23,6 +27,12 @@
 					<div class="mb-3">
 						<label class="form-label" for="id_password2">Şifrə təkrar</label>
 						<input class="form-control" type="password" name="password2" id="id_password2">
+					</div>
+					<div class="mb-3">
+						<div class="form-check form-switch">
+							<input class="form-check-input" type="checkbox" role="switch" id="id_sifreni_goster">
+							<label class="form-check-label" for="id_sifreni_goster">Şifrəni göstər</label>
+						  </div>
 					</div>
 					<button type="submit" class="btn btn-success">Qeydiyyat</button>
 				</form>
