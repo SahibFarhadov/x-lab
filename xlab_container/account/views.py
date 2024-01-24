@@ -15,6 +15,10 @@ def _login_user(request):
 def _logout_user(request):
 	pass
 
+# reset password view
+def _reset_password():
+	pass
+
 # register user
 def _register_user(request):
 	if request.method == "POST":
