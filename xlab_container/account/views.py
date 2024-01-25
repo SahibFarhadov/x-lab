@@ -16,8 +16,8 @@ def _logout_user(request):
 	pass
 
 # reset password view
-def _reset_password():
-	pass
+def _reset_password(request):
+	return render(request,'account/reset_password.html')
 
 # register user
 def _register_user(request):

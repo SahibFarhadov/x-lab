@@ -1,5 +1,61 @@
 {%extends 'base.html'%}
-
+{% load static %}
+{% block some_scripts %}
+<script src="{%static 'account/js/show_password_login.js'%}"></script>
+{% endblock  %}
+{% block title %}
+	Daxil olma səhifəsi
+{% endblock  %}
 {%block content%}
-	<h1>Login user page</h1>
+<div class="container justify-content-center">
+<div class="text-center mb-3 mt-2">
+	<h1>Daxil ol</h1>
+</div>
+<div class="row">
+	<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+	<div class="col-sm-8 col-xs-8 col-md-4 col-lg-4 col-xl-4">
+		<form method="post" action="{%url 'login_user'%}">
+			{% csrf_token %}
+			<div class="mb-3">
+				<label class="form-label" for="id_email">Elektron poçt</label>
+				<input class="form-control" type="email" name="email" id="id_email" required>
+			</div>
+			<div class="mb-3">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col ps-0">
+							<label class="form-label" for="id_password1">Şifrə</label>
+						</div>
+						<div class="col pe-0 text-end">
+							<a href="{%url 'reset_password'%}">Şifrəni unutdum</a>
+						</div>
+					</div>
+				</div>
+				<input class="form-control" type="password" name="password1" id="id_password1" required>
+			</div>
+			<div class="mb-3">
+				<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" role="switch" id="id_sifreni_goster">
+					<label class="form-check-label" for="id_sifreni_goster">Şifrəni göstər</label>
+				</div>
+			</div>
+			<div class="mb-3">
+				<button type="submit" class="btn btn-success ">Daxil ol</button>
+			</div>
+		</form>
+	</div>
+	<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+</div>
+<div class="row mt-2">
+	<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+	<div class="col-sm-8 col-xs-8 col-md-4 col-lg-4 col-xl-4">
+		<div class="mb-2">
+			<p>
+				Qeydiyyatdan keçməmisiniz? O zaman <a href="{%url 'register_user'%}">qeydiyyatdan keçin</a>
+			</p>
+		</div>
+	</div>
+	<div class="col-sm-2 col-xs-2 col-md-4 col-lg-4 col-xl-4"></div>
+</div>
+</div>
 {%endblock%}
