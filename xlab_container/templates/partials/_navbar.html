@@ -107,6 +107,9 @@
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">Hesab</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="modal" data-bs-target="#id_cixis" aria-current="page" href="#">Çıxış</a>
+              </li>
             {%endif%}
           </ul>
           <!--
@@ -120,3 +123,22 @@
       </div>
     </div>
   </nav>
+
+<!-- Modal -->
+<div class="modal fade" id="id_cixis" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Hesabdan çıxış</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span class="text-primary" style="text-decoration: underline;">{{request.user.email}}</span> çıxmaq istədiyinizdən əminsiniz?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Xeyr</button>
+        <a href={%url 'logout_user'%} type="button" class="btn btn-primary">Bəli</a>
+      </div>
+    </div>
+  </div>
+</div>
