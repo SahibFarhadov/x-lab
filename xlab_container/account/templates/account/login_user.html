@@ -33,7 +33,9 @@
 				</div>
 				<input class="form-control" type="password" name="password1" id="id_password1" required>
 				<div class="mb-3 mt-1 text-danger">
-					{{xeta}}
+					{% if xeta %}
+						{{xeta}}
+					{% endif %}
 				</div>
 			</div>
 			<div class="mb-3">
