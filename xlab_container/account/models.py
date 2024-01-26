@@ -13,6 +13,7 @@ class Author(AbstractUser):
     username = None
     email = models.EmailField(_("Email"),unique=True)
     author_uuid = models.UUIDField(editable=False,null=True,default=uuid.uuid4)
+    email_verified = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = AuthorManager()

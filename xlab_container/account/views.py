@@ -4,8 +4,18 @@ from .forms import register_user_form
 from .models import Author
 from django.contrib.auth import authenticate, login, logout
 
+# verify_email view
+def verify_email(request,_uuid):
+	if Author.objects.filter(author_uuid = _uuid).exists():
+		email_verified_user=Author.objects.get(author_uuid = _uuid)
+		email_verified_user.email_verified = True
+		email_verified_user.save()
+	return render(request,'account/verified.html')
+
 # login user
 def _login_user(request):
+	if request.user.is_authenticated:
+		return redirect("index")
 	context = {
         'kateqoriyalar': Kateqoriya.objects.all(),
         'cari_sehife' : 'daxil_ol'
@@ -18,7 +28,6 @@ def _login_user(request):
 			login(request,user)
 			return redirect("index")
 		else:
-			context
 			context["email"] = user_email
 			context["xeta"] = "Elektron poçt və ya şifrə düzgün deyil."
 
@@ -35,6 +44,8 @@ def _reset_password(request):
 
 # register user
 def _register_user(request):
+	if request.user.is_authenticated:
+		return redirect("index")
 	if request.method == "POST":
 		email = request.POST["email"]
 		password1 = request.POST["password1"]
