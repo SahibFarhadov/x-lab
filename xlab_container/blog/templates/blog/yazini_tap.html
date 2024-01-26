@@ -3,21 +3,23 @@
 {%block content%}
 	<div class="container-fluid mt-2">
 		<div class="row">
-			<div class="col-sm-0 col-md-0 col-lg-2 border border-primary">Istifadeci haqqinda melumatlar</div>
-			<div class="col-sm-12 col-md-12 col-lg-8 border border-primary">
+			<div class="col-sm-0 col-md-0 col-lg-4"></div>
+			<div class="col-sm-12 col-md-12 col-lg-4">
 				<header class="text-center mb-3 mt-2">
-					<h2>{{yazi.basliq}}</h2>
+					<h1>{{yazi.basliq}}</h1>
 				</header>
-				<article>
-					<div class="text-center">
-						<img class="img-fluid" src="{{yazi.basliq_sekli.url}}" alt="{{yazi.basliq}}">
-					</div>
-					<div class="content">
-						{{yazi.kontent|safe}}
-					</div>
-				</article>
+				<div>
+					<img class="img-fluid" src="{{yazi.basliq_sekli.url}}" alt="{{yazi.basliq}}">
+				</div>
 			</div>
-			<div class="col-sm-0 col-md-0 col-lg-2 border border-primary">Blog haqqinda melumatlar</div>
+			<div class="col-sm-0 col-md-0 col-lg-4"></div>
+		</div>
+		<div class="row mt-3">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-8">
+				{{yazi.kontent|safe}}
+			</div>
+			<div class="col-lg-2"></div>
 		</div>
 	</div>
 {%endblock%}
