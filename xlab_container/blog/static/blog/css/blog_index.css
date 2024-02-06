@@ -6,7 +6,7 @@
 }
 .karusel_basliq{
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: #ffffff;
 }
 .karusel_basliq:hover{
     text-decoration: underline;
@@ -15,4 +15,9 @@ hr.divider{
     border: none;
     border-top: 2px solid rgb(21, 226, 21);
     overflow: visible;
+}
+.karusel_basliq_ana{
+    background-color: rgba(146, 173, 160,.5)!important;
+    border-radius: 10px;
+    margin-bottom: 0;
 }
