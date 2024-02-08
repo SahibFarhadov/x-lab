@@ -1,0 +1,23 @@
+.myfooter{
+	width: 100%;
+}
+.kat_footer_ul{
+	list-style-type: none;
+	margin: 1px;
+	padding: 5px;
+}
+.list-group .list-group-item a{
+	text-decoration: none;
+	color: white;
+}
+.kat_footer_ul .kat_footer_il{
+	padding: 3px;
+}
+.kat_link a:hover{
+}
+.kat_header{
+	color: yellow;
+}
+.kat_link{
+	display: block;
+}

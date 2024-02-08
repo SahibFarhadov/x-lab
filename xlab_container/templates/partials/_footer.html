@@ -1,0 +1,18 @@
+<div class="row mb-2">
+	<div class="col-lg-2 col-sm-4">
+		<h5 class="kat_header">Kateqoriyalar:</h5>
+		{%if kateqoriyalar%}
+		<ul class="list-group list-group-flush">
+			{%for kateqoriya in kateqoriyalar%}
+			<li class="list-group-item {%if secilen_kateqoriya.kateqoriya_adi == kateqoriya.kateqoriya_adi %}active{%endif%}">
+				<a class="kat_link" href="{%url 'kateqoriyaya_get' kateqoriya.kateqoriya_slug%}">{{kateqoriya.kateqoriya_adi}}</a>
+			</li>
+			{%endfor%}
+		</ul>
+		{%endif%}
+	</div>
+	<div class="col-lg-8 col-sm-8">
+		2
+	</div>
+	<div class="col-lg-2">3</div>
+</div>
